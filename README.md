@@ -257,6 +257,6 @@ You **must** have installed ncjishaku with one of the commands above before doin
 ## Acknowledgements
 
 The original [jishaku](https://github.com/scarletcafe/jishaku) was written by [Devon (scarletcafe) R](https://github.com/scarletcafe), which is licensed under the MIT license.  
-See [LICENSE](./LICENSE) for details.
+See [LICENSE](https://github.com/CrystalAlpha358/ncjishaku/blob/master/LICENSE) for details.
 
 The documentation and this README uses icons from the <a href="https://github.com/google/material-design-icons">Material Design Icon</a> library, which is licensed under the <a href="https://www.apache.org/licenses/LICENSE-2.0.html">Apache License Version 2.0</a>.
