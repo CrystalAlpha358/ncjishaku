@@ -129,6 +129,7 @@ setup(
     url='https://github.com/CrystalAlpha358/ncjishaku',
 
     license='MIT',
+    license_files=["LICENSE"],
     description='A nextcord extension including useful tools for bot development and debugging.',
     long_description=README,
     long_description_content_type='text/markdown',
@@ -154,10 +155,9 @@ setup(
 
     keywords='jishaku nextcord discord cog repl extension',
     classifiers=[
-        'Development Status :: 1 - Planning',
+        'Development Status :: 3 - Alpha',
         'Framework :: AsyncIO',
         'Intended Audience :: Developers',
-        'License :: OSI Approved :: MIT License',
         'Natural Language :: English',
         'Operating System :: OS Independent',
         'Programming Language :: Python :: 3 :: Only',
