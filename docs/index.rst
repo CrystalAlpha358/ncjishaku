@@ -8,6 +8,8 @@ Welcome to ncjishaku's documentation!
 
 .. image:: /images/jishaku-keyart.png
 
+**Disclaimer:** This project is currently in very early stages of development.
+
 ncjishaku is a debugging and utility extension for nextcord bots.
 
 The documentation is split up into categories. Please see the index below.

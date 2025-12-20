@@ -21,6 +21,10 @@ ncjishaku
 <sup>
 a debugging and utility extension for nextcord bots
 </sup>
+<br>
+<sup>
+    <a href="https://ncjishaku.readthedocs.io/">Read the documentation online.</a>
+</sup>
 </p>
 
 ***
