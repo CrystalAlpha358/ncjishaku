@@ -1,8 +1,12 @@
-[![Python versions](https://img.shields.io/pypi/pyversions/jishaku.svg)](https://pypi.python.org/pypi/jishaku)
-[![License](https://img.shields.io/pypi/l/jishaku.svg)](https://github.com/scarletcafe/jishaku/blob/master/LICENSE)
-[![Status](https://img.shields.io/pypi/status/jishaku.svg)](https://pypi.python.org/pypi/jishaku)
-[![Issues](https://img.shields.io/github/issues/scarletcafe/jishaku.svg?colorB=3333ff)](https://github.com/scarletcafe/jishaku/issues)
-[![Commit activity](https://img.shields.io/github/commit-activity/w/scarletcafe/jishaku.svg)](https://github.com/scarletcafe/jishaku/commits)
+<!-- Currently commented out because it has not been uploaded PyPI
+[![Python versions](https://img.shields.io/pypi/pyversions/ncjishaku.svg)](https://pypi.python.org/pypi/ncjishaku)
+[![License](https://img.shields.io/pypi/l/ncjishaku.svg)](https://github.com/CrystalAlpha358/ncjishaku/blob/master/LICENSE)
+[![Status](https://img.shields.io/pypi/status/ncjishaku.svg)](https://pypi.python.org/pypi/ncjishaku)
+-->
+<!-- Currently commented out because issues are not enabled
+[![Issues](https://img.shields.io/github/issues/CrystalAlpha358/ncjishaku.svg?colorB=3333ff)](https://github.com/CrystalAlpha358/ncjishaku/issues)
+-->
+[![Commit activity](https://img.shields.io/github/commit-activity/w/CrystalAlpha358/ncjishaku.svg)](https://github.com/CrystalAlpha358/ncjishaku/commits)
 
 ***
 
@@ -11,33 +15,29 @@
     <img src=".github/assets/jishaku_logo.svg" height="36">
 </sub>
 &nbsp;
-jishaku
+ncjishaku
 </h1>
 <p align="center">
 <sup>
-a debugging and utility extension for discord.py bots
-</sup>
-<br>
-<sup>
-    <a href="https://jishaku.readthedocs.io/">Read the documentation online.</a>
+a debugging and utility extension for nextcord bots
 </sup>
 </p>
 
 ***
 
-jishaku is an extension for bot developers that enables rapid prototyping, experimentation, and debugging of features for bots.
+***Disclaimer:*** This project is currently in very early stages of development.
 
-One of jishaku's core philosophies is to be dynamic and easy-to-use. Here's the two step install:
+ncjishaku is an extension for bot developers that enables rapid prototyping, experimentation, and debugging of features for bots.
 
-> 1. Download jishaku on the command line using pip:
+One of ncjishaku's core philosophies is to be dynamic and easy-to-use. Here's the two step install:
+
+> 1. Download ncjishaku on the command line using pip:
 > ```bash
-> pip install -U jishaku
+> pip install -U "ncjishaku @ git+https://github.com/CrystalAlpha358/ncjishaku@master"
 > ```
 > 2. Load the extension in your bot code before it runs:
 > ```python
-> bot.load_extension('jishaku')
-> # or
-> await bot.load_extension('jishaku')
+> bot.load_extension('ncjishaku')
 > ```
 > That's it!
 
@@ -46,8 +46,11 @@ You can also import the module to use the command development utilities.
 ## Index
 
 * [Command reference](#command-reference)
-* [Installing development versions](#installing-development-versions)
 * [Acknowledgements](#acknowledgements)
+
+<!-- Currently commented out because it has not been uploaded PyPI
+* [Installing development versions](#installing-development-versions)
+-->
 
 ## Command reference
 
@@ -88,25 +91,25 @@ You can also import the module to use the command development utilities.
                 <tr>
                     <td><code>_ctx</code></td>
                     <td>
-                        The <a href="https://discordpy.readthedocs.io/en/latest/ext/commands/api.html#discord.ext.commands.Context">Context</a> that invoked the command.
+                        The <a href="https://docs.nextcord.dev/en/stable/ext/commands/api.html#nextcord.ext.commands.Context">Context</a> that invoked the command.
                     </td>
                 </tr>
                 <tr>
                     <td><code>_bot</code></td>
                     <td>
-                        The running <a href="https://discordpy.readthedocs.io/en/latest/ext/commands/api.html#discord.ext.commands.Bot">Bot</a> instance.
+                        The running <a href="https://docs.nextcord.dev/en/stable/ext/commands/api.html#nextcord.ext.commands.Bot">Bot</a> instance.
                     </td>
                 </tr>
                 <tr>
                     <td><code>_author</code><br><code>_channel</code><br><code>_guild</code><br><code>_me</code><br><code>_message</code><br><code>_msg</code></td>
                     <td>
-                        Shortcuts for attributes on <a href="https://discordpy.readthedocs.io/en/latest/ext/commands/api.html#discord.ext.commands.Context"><code>_ctx</code></a>.
+                        Shortcuts for attributes on <a href="https://docs.nextcord.dev/en/stable/ext/commands/api.html#nextcord.ext.commands.Context"><code>_ctx</code></a>.
                     </td>
                 </tr>
                 <tr>
                     <td><code>_find</code><br><code>_get</code></td>
                     <td>
-                        Shortcuts for <a href="https://discordpy.readthedocs.io/en/latest/api.html#utility-functions"><code>discord.utils</code></a> functions.
+                        Shortcuts for <a href="https://docs.nextcord.dev/en/stable/api.html#utility-functions"><code>nextcord.utils</code></a> functions.
                     </td>
                 </tr>
             </table>
@@ -140,9 +143,9 @@ You can also import the module to use the command development utilities.
             <h4>&gt; <code>jishaku [sh|shell] &lt;argument&gt;</code></h4>
             The shell command executes commands within your system shell.
             <br><br>
-            If you're on Linux and are using a custom shell, jishaku will obey the <code>SHELL</code> environment variable, otherwise, it will use <code>/bin/bash</code>.
+            If you're on Linux and are using a custom shell, ncjishaku will obey the <code>SHELL</code> environment variable, otherwise, it will use <code>/bin/bash</code>.
             <br>
-            On Windows, jishaku will use PowerShell if it's detected, otherwise, it will use Command Prompt.
+            On Windows, ncjishaku will use PowerShell if it's detected, otherwise, it will use Command Prompt.
             <br><br>
             The results from the commands you pass in are returned through a paginator interface live as the command runs. If you need to stop a command, you can press the stop button reaction, or use <code>jsk cancel</code>.
             <br><br>
@@ -166,7 +169,7 @@ You can also import the module to use the command development utilities.
             <h4>&gt; <code>jishaku unload [extensions...]</code></h4>
             These commands load, reload, or unload extensions on your bot.
             <br><br>
-            You can reload jishaku itself with <code>jsk reload jishaku</code>.
+            You can reload ncjishaku itself with <code>jsk reload ncjishaku</code>.
             <br>
             <code>jsk reload ~</code> will reload all extensions on your bot.
             <br><br>
@@ -230,35 +233,30 @@ You can also import the module to use the command development utilities.
     </tr>
 </table>
 
+<!-- Currently commented out because it has not been uploaded PyPI
 ## Installing development versions
 
-If you'd like to test the latest versions of jishaku, you can do so by downloading from the git hosts instead of from PyPI.
+If you'd like to test the latest versions of ncjishaku, you can do so by downloading from the git hosts instead of from PyPI.
 
-> From GitHub:
 > ```bash
-> pip install -U "jishaku @ git+https://github.com/scarletcafe/jishaku@master"
-> ```
-> From GitLab:
-> ```bash
-> pip install -U "jishaku @ git+https://gitlab.com/scarletcafe/jishaku@master"
+> pip install -U "ncjishaku @ git+https://github.com/CrystalAlpha358/ncjishaku@master"
 > ```
 
 Please note that the new 2020 dependency resolver now no longer discounts git package sources from reinstall prevention,
-which means that if you are installing the jishaku development version multiple times within the same version target you may run into pip just discarding the update.
+which means that if you are installing the ncjishaku development version multiple times within the same version target you may run into pip just discarding the update.
 
-If you run into such a problem, you can force jishaku to be reinstalled like this:
+If you run into such a problem, you can force ncjishaku to be reinstalled like this:
 
-> From GitHub:
 > ```bash
-> pip install -U --force-reinstall "jishaku @ git+https://github.com/scarletcafe/jishaku@master"
-> ```
-> From GitLab:
-> ```bash
-> pip install -U --force-reinstall "jishaku @ git+https://gitlab.com/scarletcafe/jishaku@master"
+> pip install -U --force-reinstall "ncjishaku @ git+https://github.com/CrystalAlpha358/ncjishaku@master"
 > ```
 
-You **must** have installed jishaku with one of the commands above before doing this else you will probably end up with a broken installation.
+You **must** have installed ncjishaku with one of the commands above before doing this else you will probably end up with a broken installation.
+-->
 
 ## Acknowledgements
+
+The original [jishaku](https://github.com/scarletcafe/jishaku) was written by [Devon (scarletcafe) R](https://github.com/scarletcafe), which is licensed under the MIT license.  
+See [LICENSE](./LICENSE) for details.
 
 The documentation and this README uses icons from the <a href="https://github.com/google/material-design-icons">Material Design Icon</a> library, which is licensed under the <a href="https://www.apache.org/licenses/LICENSE-2.0.html">Apache License Version 2.0</a>.
