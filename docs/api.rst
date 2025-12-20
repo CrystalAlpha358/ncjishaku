@@ -1,7 +1,7 @@
 .. currentmodule:: ncjishaku
 
 ncjishaku as an API
-=================
+===================
 
 ncjishaku contains numerous internal classes and functions it uses to facilitate
 both the commands in the `cog <cog.html>`_ and miscellaneous parts of bot development.
@@ -67,7 +67,7 @@ You can use them like this:
 
 .. code:: python3
 
-    from discord.ext import commands
+    from nextcord.ext import commands
 
     from ncjishaku.help_command import MinimalPaginatorHelp
 

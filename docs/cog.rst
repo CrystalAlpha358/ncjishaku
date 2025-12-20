@@ -1,7 +1,7 @@
 .. currentmodule:: ncjishaku
 
 ncjishaku as a cog
-================
+==================
 
 Custom cogs and the Feature framework
 --------------------------------------
@@ -35,7 +35,7 @@ Here is an example of a simple custom cog using this setup:
 
 .. code:: python3
 
-    from discord.ext import commands
+    from nextcord.ext import commands
 
     from ncjishaku.features.python import PythonFeature
     from ncjishaku.features.root_command import RootCommand
@@ -55,7 +55,7 @@ Thus, you can make a cog without any optional features like so:
 
 .. code:: python3
 
-    from discord.ext import commands
+    from nextcord.ext import commands
 
     from ncjishaku.cog import STANDARD_FEATURES
 
@@ -72,7 +72,7 @@ To use these features as well, simply add them to your cog:
 
 .. code:: python3
 
-    from discord.ext import commands
+    from nextcord.ext import commands
 
     from ncjishaku.cog import STANDARD_FEATURES, OPTIONAL_FEATURES
 
@@ -128,7 +128,7 @@ You can even override the ncjishaku base command using this method:
             await ctx.send("I'm walking on a Star!")
 
 Changing who can use ncjishaku
------------------------------
+------------------------------
 
 The ``jishaku`` command group has an owner check applied to it and all subcommands.
 To change who can use ncjishaku, you must change how the owner is determined in your own Bot:
@@ -136,7 +136,7 @@ To change who can use ncjishaku, you must change how the owner is determined in 
 .. code:: python3
 
     class MyBot(commands.Bot):
-        async def is_owner(self, user: discord.User):
+        async def is_owner(self, user: nextcord.User):
             if something:  # Implement your own conditions here
                 return True
 
@@ -203,9 +203,9 @@ Yielded results are treated the same as if they were returned.
 When using the ``jsk py`` command, there are a set of contextual variables you can use to interact with Discord:
 
 +----------------+-----------------------------------------------------------+
-| ``_bot``       |  The :class:`discord.ext.commands.Bot` instance.          |
+| ``_bot``       |  The :class:`nextcord.ext.commands.Bot` instance.         |
 +----------------+-----------------------------------------------------------+
-| ``_ctx``       |  The invoking :class:`discord.ext.commands.Context`.      |
+| ``_ctx``       |  The invoking :class:`nextcord.ext.commands.Context`.     |
 +----------------+-----------------------------------------------------------+
 | ``_message``   |  An alias for ``_ctx.message``.                           |
 +----------------+                                                           |
@@ -217,9 +217,9 @@ When using the ``jsk py`` command, there are a set of contextual variables you c
 +----------------+-----------------------------------------------------------+
 | ``_guild``     |  An alias for ``_ctx.guild``.                             |
 +----------------+-----------------------------------------------------------+
-| ``_find``      |  A shorthand for :func:`discord.utils.find`.              |
+| ``_find``      |  A shorthand for :func:`nextcord.utils.find`.             |
 +----------------+-----------------------------------------------------------+
-| ``_get``       |  A shorthand for :func:`discord.utils.get`.               |
+| ``_get``       |  A shorthand for :func:`nextcord.utils.get`.              |
 +----------------+-----------------------------------------------------------+
 
 Example:
@@ -258,9 +258,9 @@ Commands
 
     Empty strings will be sent as a ZWSP (``\u200b``).
 
-    :class:`discord.File` instances will be uploaded.
+    :class:`nextcord.File` instances will be uploaded.
 
-    :class:`discord.Embed` instances will be sent as embeds.
+    :class:`nextcord.Embed` instances will be sent as embeds.
 
     Any other instance is ``repr``'d and sent using the same rules as a string.
 

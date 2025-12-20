@@ -4,11 +4,11 @@
    contain the root `toctree` directive.
 
 Welcome to ncjishaku's documentation!
-===================================
+=====================================
 
 .. image:: /images/jishaku-keyart.png
 
-ncjishaku is a debugging and utility extension for discord.py bots.
+ncjishaku is a debugging and utility extension for nextcord bots.
 
 The documentation is split up into categories. Please see the index below.
 
