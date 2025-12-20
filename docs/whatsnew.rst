@@ -1,4 +1,4 @@
-.. currentmodule:: jishaku
+.. currentmodule:: ncjishaku
 
 What's new?
 ================

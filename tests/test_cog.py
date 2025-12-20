@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 """
-jishaku.cog loadability and functionality test
+ncjishaku.cog loadability and functionality test
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 :copyright: (c) 2021 Devon (scarletcafe) R
@@ -23,20 +23,20 @@ from tests import utils
 @pytest_asyncio.fixture(
     scope='function',
     params=[
-        ("jishaku", commands.Bot, {}),
-        ("jishaku", commands.Bot, {"shard_id": 0, "shard_count": 2}),
-        ("jishaku", commands.AutoShardedBot, {}),
-        ("jishaku.cog", commands.Bot, {}),
-        ("jishaku.cog", commands.Bot, {"shard_id": 0, "shard_count": 2}),
-        ("jishaku.cog", commands.AutoShardedBot, {}),
+        ("ncjishaku", commands.Bot, {}),
+        ("ncjishaku", commands.Bot, {"shard_id": 0, "shard_count": 2}),
+        ("ncjishaku", commands.AutoShardedBot, {}),
+        ("ncjishaku.cog", commands.Bot, {}),
+        ("ncjishaku.cog", commands.Bot, {"shard_id": 0, "shard_count": 2}),
+        ("ncjishaku.cog", commands.AutoShardedBot, {}),
     ],
     ids=[
-        "jishaku (Bot, unsharded)",
-        "jishaku (Bot, sharded)",
-        "jishaku (AutoShardedBot)",
-        "jishaku.cog (Bot, unsharded)",
-        "jishaku.cog (Bot, sharded)",
-        "jishaku.cog (AutoShardedBot)"
+        "ncjishaku (Bot, unsharded)",
+        "ncjishaku (Bot, sharded)",
+        "ncjishaku (AutoShardedBot)",
+        "ncjishaku.cog (Bot, unsharded)",
+        "ncjishaku.cog (Bot, sharded)",
+        "ncjishaku.cog (AutoShardedBot)"
     ]
 )
 async def bot(request):

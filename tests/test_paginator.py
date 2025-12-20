@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 """
-jishaku converter test
+ncjishaku converter test
 ~~~~~~~~~~~~~~~~~~~~~~
 
 :copyright: (c) 2021 Devon (scarletcafe) R
@@ -15,7 +15,7 @@ from io import BytesIO
 
 import pytest
 
-from jishaku.paginators import FilePaginator, WrappedPaginator
+from ncjishaku.paginators import FilePaginator, WrappedPaginator
 
 
 def test_file_paginator():

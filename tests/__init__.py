@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 """
-jishaku unit & integration tests
+ncjishaku unit & integration tests
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Most of these are unit, not integration, tests.

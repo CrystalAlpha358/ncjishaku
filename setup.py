@@ -59,7 +59,7 @@ from setuptools import setup
 
 ROOT = pathlib.Path(__file__).parent
 
-with open(ROOT / 'jishaku' / 'meta.py', 'r', encoding='utf-8') as f:
+with open(ROOT / 'ncjishaku' / 'meta.py', 'r', encoding='utf-8') as f:
     VERSION_MATCH = re.search(r'VersionInfo\(major=(\d+), minor=(\d+), micro=(\d+), .+\)', f.read(), re.MULTILINE)
 
     if not VERSION_MATCH:
@@ -138,7 +138,7 @@ setup(
     },
 
     version=version,
-    packages=['jishaku', 'jishaku.features', 'jishaku.repl'],
+    packages=['ncjishaku', 'ncjishaku.features', 'ncjishaku.repl'],
     include_package_data=True,
     install_requires=REQUIREMENTS,
     python_requires='>=3.12.0',
@@ -146,7 +146,7 @@ setup(
     extras_require=EXTRA_REQUIRES,
     entry_points={
         'console_scripts': [
-            'jishaku = jishaku.__main__:entrypoint',
+            'ncjishaku = ncjishaku.__main__:entrypoint',
         ],
     },
 

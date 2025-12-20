@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 """
-jishaku ast tree generation test
+ncjishaku ast tree generation test
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 :copyright: (c) 2022 Devon (scarletcafe) R
@@ -12,7 +12,7 @@ jishaku ast tree generation test
 
 import inspect
 
-from jishaku.repl.disassembly import create_tree
+from ncjishaku.repl.disassembly import create_tree
 
 
 def test_ast_missing_fields():

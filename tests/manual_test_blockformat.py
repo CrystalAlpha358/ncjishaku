@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 """
-jishaku manual blockformat test
+ncjishaku manual blockformat test
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 This test checks that blockformats look OK and function correctly.
@@ -15,7 +15,7 @@ You should run it in a bash-like shell (that supports ANSI codes).
 
 import inspect
 
-from jishaku.formatting import LineFormatter, MultilineFormatter
+from ncjishaku.formatting import LineFormatter, MultilineFormatter
 
 if __name__ == '__main__':
     print("== No Annotations Test ==")

@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 """
-jishaku.hljs test
+ncjishaku.hljs test
 ~~~~~~~~~~~~~~~~~
 
 :copyright: (c) 2021 Devon (scarletcafe) R
@@ -15,7 +15,7 @@ import typing
 
 import pytest
 
-from jishaku.functools import executor_function
+from ncjishaku.functools import executor_function
 
 
 def sig(*args, **kwargs):

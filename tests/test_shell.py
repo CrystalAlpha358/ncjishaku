@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 """
-jishaku.shell test
+ncjishaku.shell test
 ~~~~~~~~~~~~~~~~~~
 
 :copyright: (c) 2021 Devon (scarletcafe) R
@@ -15,7 +15,7 @@ import sys
 
 import pytest
 
-from jishaku.shell import ShellReader
+from ncjishaku.shell import ShellReader
 
 
 @pytest.mark.asyncio

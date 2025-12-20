@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 """
-jishaku.hljs test
+ncjishaku.hljs test
 ~~~~~~~~~~~~~~~~~
 
 :copyright: (c) 2021 Devon (scarletcafe) R
@@ -12,7 +12,7 @@ jishaku.hljs test
 
 import pytest
 
-from jishaku.hljs import get_language
+from ncjishaku.hljs import get_language
 
 
 @pytest.mark.parametrize(

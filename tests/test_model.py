@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 """
-jishaku.models tests
+ncjishaku.models tests
 ~~~~~~~~~~~~~~~~~~~~
 
 :copyright: (c) 2021 Devon (scarletcafe) R
@@ -12,7 +12,7 @@ jishaku.models tests
 
 import pytest
 
-from jishaku.models import copy_context_with
+from ncjishaku.models import copy_context_with
 from tests import utils
 
 

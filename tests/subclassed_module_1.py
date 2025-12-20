@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 """
-jishaku subclassing test 1
+ncjishaku subclassing test 1
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 This is a valid extension file for discord.py intended to
@@ -17,16 +17,16 @@ This variant overrides behavior using a Feature.
 
 from discord.ext import commands
 
-import jishaku
-from jishaku.types import ContextT
+import ncjishaku
+from ncjishaku.types import ContextT
 
 
-class ThirdPartyFeature(jishaku.Feature):
+class ThirdPartyFeature(ncjishaku.Feature):
     """
     overriding feature for test
     """
 
-    @jishaku.Feature.Command(name="jishaku", aliases=["jsk"], invoke_without_command=True, ignore_extra=False)
+    @ncjishaku.Feature.Command(name="jishaku", aliases=["jsk"], invoke_without_command=True, ignore_extra=False)
     async def jsk(self, ctx: ContextT):
         """
         override test
@@ -34,7 +34,7 @@ class ThirdPartyFeature(jishaku.Feature):
         return await ctx.send("The behavior of this command has been overridden with a third party feature.")
 
 
-class Magnet1(ThirdPartyFeature, *jishaku.OPTIONAL_FEATURES, *jishaku.STANDARD_FEATURES):  # pylint: disable=too-few-public-methods
+class Magnet1(ThirdPartyFeature, *ncjishaku.OPTIONAL_FEATURES, *ncjishaku.STANDARD_FEATURES):  # pylint: disable=too-few-public-methods
     """
     The extended Jishaku cog
     """

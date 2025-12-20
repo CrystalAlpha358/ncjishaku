@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 """
-jishaku converter test
+ncjishaku converter test
 ~~~~~~~~~~~~~~~~~~~~~~
 
 :copyright: (c) 2021 Devon (scarletcafe) R
@@ -12,7 +12,7 @@ jishaku converter test
 
 import inspect
 
-from jishaku.codeblocks import Codeblock, codeblock_converter
+from ncjishaku.codeblocks import Codeblock, codeblock_converter
 
 
 def test_codeblock_converter():

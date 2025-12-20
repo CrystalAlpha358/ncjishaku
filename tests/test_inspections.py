@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 """
-jishaku.inspections test
+ncjishaku.inspections test
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 :copyright: (c) 2021 Devon (scarletcafe) R
@@ -16,7 +16,7 @@ import typing
 import discord
 import pytest
 
-from jishaku.repl.inspections import all_inspections
+from ncjishaku.repl.inspections import all_inspections
 from tests.utils import sentinel
 
 

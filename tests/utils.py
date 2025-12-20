@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 """
-jishaku test utils
+ncjishaku test utils
 ~~~~~~~~~~~~~~~~~~~~~~
 
 :copyright: (c) 2021 Devon (scarletcafe) R

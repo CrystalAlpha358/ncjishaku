@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 """
-jishaku manual multiclass test
+ncjishaku manual multiclass test
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 This is a manually-activated test designed to determine if independent
@@ -30,7 +30,7 @@ from discord.ext import commands
 LOADABLES = (
     ('j!1 ', 'tests.subclassed_module_1'),
     ('j!2 ', 'tests.subclassed_module_2'),
-    ('j!n ', 'jishaku'),
+    ('j!n ', 'ncjishaku'),
 )
 
 
