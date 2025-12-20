@@ -15,13 +15,10 @@ The ncjishaku root command.
 import sys
 import typing
 
-try:
-    from importlib.metadata import distribution, packages_distributions
-except ImportError:
-    from importlib_metadata import distribution, packages_distributions
+from importlib.metadata import distribution, packages_distributions
 
-import discord
-from discord.ext import commands
+import nextcord
+from nextcord.ext import commands
 
 from ncjishaku.features.baseclass import Feature
 from ncjishaku.flags import Flags
@@ -55,11 +52,11 @@ class RootCommand(Feature):
         All other functionality is within its subcommands.
         """
 
-        # Try to locate what vends the `discord` package
+        # Try to locate what vends the `nextcord` package
         distributions: typing.List[str] = [
-            dist for dist in packages_distributions()['discord']  # type: ignore
+            dist for dist in packages_distributions()['nextcord']  # type: ignore
             if any(
-                file.parts == ('discord', '__init__.py')  # type: ignore
+                file.parts == ('nextcord', '__init__.py')  # type: ignore
                 for file in distribution(dist).files  # type: ignore
             )
         ]
@@ -67,7 +64,7 @@ class RootCommand(Feature):
         if distributions:
             dist_version = f'{distributions[0]} `{package_version(distributions[0])}`'
         else:
-            dist_version = f'unknown `{discord.__version__}`'
+            dist_version = f'unknown `{nextcord.__version__}`'
 
         summary = [
             f"Jishaku v{package_version('ncjishaku')}, {dist_version}, "
@@ -112,7 +109,7 @@ class RootCommand(Feature):
         cache_summary = f"{len(self.bot.guilds)} guild{s_for_guilds} and {len(self.bot.users)} user{s_for_users}"
 
         # Show shard settings to summary
-        if isinstance(self.bot, discord.AutoShardedClient):
+        if isinstance(self.bot, nextcord.AutoShardedClient):
             if len(self.bot.shards) > 20:
                 summary.append(
                     f"This bot is automatically sharded ({len(self.bot.shards)} shards of {self.bot.shard_count})"
@@ -235,7 +232,7 @@ class RootCommand(Feature):
         if index == -1:
             task = self.tasks.pop()
         else:
-            task = discord.utils.get(self.tasks, index=index)
+            task = nextcord.utils.get(self.tasks, index=index)
             if task:
                 self.tasks.remove(task)
             else:
@@ -246,7 +243,7 @@ class RootCommand(Feature):
 
         if task.ctx.command:
             await ctx.send(f"Cancelled task {task.index}: `{task.ctx.command.qualified_name}`,"
-                           f" invoked {discord.utils.format_dt(task.ctx.message.created_at, 'R')}")
+                           f" invoked {nextcord.utils.format_dt(task.ctx.message.created_at, 'R')}")
         else:
             await ctx.send(f"Cancelled task {task.index}: unknown,"
-                           f" invoked {discord.utils.format_dt(task.ctx.message.created_at, 'R')}")
+                           f" invoked {nextcord.utils.format_dt(task.ctx.message.created_at, 'R')}")

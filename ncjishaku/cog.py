@@ -15,7 +15,7 @@ The Jishaku debugging and diagnostics cog implementation.
 import inspect
 import typing
 
-from discord.ext import commands
+from nextcord.ext import commands
 
 from ncjishaku.features.baseclass import Feature
 from ncjishaku.features.filesystem import FilesystemFeature

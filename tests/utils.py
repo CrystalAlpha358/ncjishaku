@@ -12,12 +12,13 @@ ncjishaku test utils
 
 import asyncio
 import contextlib
+import datetime
 import random
 import typing
 from unittest import mock
 from unittest.mock import patch
 
-from discord.ext import commands
+from nextcord.ext import commands
 
 
 def sentinel():
@@ -98,5 +99,6 @@ def mock_ctx(bot: typing.Optional[commands.Bot] = None):
         ctx.channel = ctx.message.channel
         ctx.guild = ctx.message.guild
         ctx.send = ctx.message.channel.send
+        ctx.message.created_at.mock_add_spec(datetime.datetime)
 
         yield ctx

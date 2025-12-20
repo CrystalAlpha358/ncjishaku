@@ -19,7 +19,7 @@ from tests import utils
 @pytest.mark.asyncio
 async def test_context_copy():
     with utils.mock_ctx() as ctx:
-        await copy_context_with(ctx, author=1, channel=2, content=3)
+        await copy_context_with(ctx, author=1, channel=2, content=3)  # pyright: ignore[reportArgumentType]
 
         ctx.bot.get_context.assert_called_once()
         alt_message = ctx.bot.get_context.call_args[0][0]

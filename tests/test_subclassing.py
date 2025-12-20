@@ -10,10 +10,10 @@ ncjishaku subclassing functionality test
 
 """
 
-import discord
+import nextcord
 import pytest
 import pytest_asyncio
-from discord.ext import commands
+from nextcord.ext import commands
 
 from tests import utils
 
@@ -49,15 +49,15 @@ from tests import utils
 async def bot(
     request: pytest.FixtureRequest
 ):
-    b = request.param[3]('?', intents=discord.Intents.all(), **request.param[4])
-    await discord.utils.maybe_coroutine(b.load_extension, request.param[0])
+    b = request.param[3]('?', intents=nextcord.Intents.all(), **request.param[4])
+    await nextcord.utils.maybe_coroutine(b.load_extension, request.param[0])
 
     b.test_cog = request.param[1]
     b.test_predicate = request.param[2]
 
     yield b
 
-    await discord.utils.maybe_coroutine(b.unload_extension, request.param[0])
+    await nextcord.utils.maybe_coroutine(b.unload_extension, request.param[0])
 
 
 @pytest.mark.asyncio

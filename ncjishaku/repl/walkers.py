@@ -113,8 +113,8 @@ class KeywordTransformer(ast.NodeTransformer):
                         ops=[
                             # in
                             ast.In(
-                                lineno=node.lineno,
-                                col_offset=node.col_offset
+                                lineno=node.lineno,  # pyright: ignore[reportArgumentType, reportCallIssue]
+                                col_offset=node.col_offset  # pyright: ignore[reportArguementType, reportCallIssue]
                             )
                         ],
                         comparators=[
@@ -187,11 +187,11 @@ class KeywordTransformer(ast.NodeTransformer):
             func=ast.Name(
                 id='globals',
                 ctx=ast.Load(),
-                lineno=node.lineno,
-                col_offset=node.col_offset
+                lineno=node.lineno,  # pyright: ignore[reportAttributeAccessIssue]
+                col_offset=node.col_offset  # pyright: ignore[reportAttributeAccessIssue]
             ),
             args=[],
             keywords=[],
-            lineno=node.lineno,
-            col_offset=node.col_offset
+            lineno=node.lineno,  # pyright: ignore[reportAttributeAccessIssue]
+            col_offset=node.col_offset  # pyright: ignore[reportAttributeAccessIssue]
         )
