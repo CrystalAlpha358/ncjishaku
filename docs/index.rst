@@ -10,7 +10,7 @@ Welcome to ncjishaku's documentation!
 
 **Disclaimer:** This project is currently in very early stages of development.
 
-ncjishaku is a debugging and utility extension for nextcord bots.
+ncjishaku is a debugging and utility extension for nextcord bots, which was forked from `jishaku <https://github.com/scarletcafe/jishaku>`_.
 
 The documentation is split up into categories. Please see the index below.
 

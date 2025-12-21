@@ -31,6 +31,8 @@ a debugging and utility extension for nextcord bots
 
 ncjishaku is an extension for bot developers that enables rapid prototyping, experimentation, and debugging of features for bots.
 
+This is a fork of [jishaku](https://github.com/scarletcafe/jishaku) for nextcord v3.
+
 One of ncjishaku's core philosophies is to be dynamic and easy-to-use. Here's the two step install:
 
 > 1. Download ncjishaku on the command line using pip:
