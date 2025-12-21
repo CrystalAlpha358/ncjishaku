@@ -33,6 +33,25 @@ class VersionInfo(typing.NamedTuple):
     releaselevel: str
     serial: int
 
+    def __str__(self) -> str:
+        version = '.'.join(map(str, (self.major, self.minor, self.micro)))
+        match self.releaselevel.lower():
+            case 'final' | '':
+                return version
+            case 'alpha':
+                releaselevel = 'a'
+            case 'beta':
+                releaselevel = 'b'
+            case 'c' | 'pre' | 'preview':
+                releaselevel = 'rc'
+            case 'dev':
+                releaselevel = '.dev'
+            case 'post' | 'rev' | 'r':
+                releaselevel = '.post'
+            case other:
+                releaselevel = other
+        return f'{version}{releaselevel}{self.serial}'
+
 
 version_info = VersionInfo(major=3, minor=0, micro=0, releaselevel='beta', serial=1)
 
@@ -41,4 +60,4 @@ __copyright__ = 'Copyright (c) 2025 CrystalAlpha358'
 __docformat__ = 'restructuredtext en'
 __license__ = 'MIT'
 __title__ = 'ncjishaku'
-__version__ = '.'.join(map(str, (version_info.major, version_info.minor, version_info.micro)))
+__version__ = str(version_info)
