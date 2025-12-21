@@ -34,7 +34,7 @@ class VersionInfo(typing.NamedTuple):
     serial: int
 
 
-version_info = VersionInfo(major=3, minor=0, micro=0, releaselevel='alpha', serial=1)
+version_info = VersionInfo(major=3, minor=0, micro=0, releaselevel='beta', serial=1)
 
 __author__ = 'CrystalAlpha358'
 __copyright__ = 'Copyright (c) 2025 CrystalAlpha358'
