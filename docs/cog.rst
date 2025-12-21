@@ -246,7 +246,8 @@ use the ``jsk retain on`` and ``jsk retain off`` commands to toggle variable ret
 Commands
 ---------
 
-.. py:function:: jsk [python|py] <argument: str>
+.. py:function:: jsk python <argument: str>
+                 jsk py <argument: str>
 
     |tasked|
 
@@ -264,7 +265,9 @@ Commands
 
     Any other instance is ``repr``'d and sent using the same rules as a string.
 
-.. py:function:: jsk [python_inspect|pythoninspect|pyi] <argument: str>
+.. py:function:: jsk python_inspect <argument: str>
+                 jsk pythoninspect <argument: str>
+                 jsk pyi <argument: str>
 
     |tasked|
 
@@ -276,7 +279,8 @@ Commands
     else it is sent as a :class:`PaginatorInterface`.
 
 
-.. py:function:: jsk [disassemble|dis] <argument: str>
+.. py:function:: jsk disassemble <argument: str>
+                 jsk dis <argument: str>
 
     Compiles Python code in an asynchronous context, and returns the disassembly.
 
@@ -288,7 +292,7 @@ Commands
     it is always sent as a :class:`PaginatorInterface`.
 
 
-.. py:function:: jsk [disassemble|dis] <argument: str>
+.. py:function:: jsk ast <argument: str>
 
     Compiles Python code into its Abstract Syntax Tree using :func:`ast.compile`, and then formats it into a visual ASCII tree, with ANSI support if it is usable.
 
@@ -310,7 +314,8 @@ Commands
     (you cannot concurrently share variables between running REPL sessions).
 
 
-.. py:function:: jsk [shell|sh] <argument: str>
+.. py:function:: jsk shell <argument: str>
+                 jsk sh <argument: str>
 
     |tasked|
 
@@ -321,7 +326,8 @@ Commands
     If no output is produced by the command for 120 seconds, a :class:`asyncio.TimeoutException` will be raised and the shell process will be terminated.
 
 
-.. py:function:: jsk [load|reload] [extensions...]
+.. py:function:: jsk load [extensions...]
+                 jsk reload [extensions...]
 
     Loads, or reloads, a number of extensions. Extension names are delimited by spaces.
 

@@ -3,9 +3,7 @@
 [![License](https://img.shields.io/pypi/l/ncjishaku.svg)](https://github.com/CrystalAlpha358/ncjishaku/blob/master/LICENSE)
 [![Status](https://img.shields.io/pypi/status/ncjishaku.svg)](https://pypi.python.org/pypi/ncjishaku)
 -->
-<!-- Currently commented out because issues are not enabled
 [![Issues](https://img.shields.io/github/issues/CrystalAlpha358/ncjishaku.svg?colorB=3333ff)](https://github.com/CrystalAlpha358/ncjishaku/issues)
--->
 [![Commit activity](https://img.shields.io/github/commit-activity/w/CrystalAlpha358/ncjishaku.svg)](https://github.com/CrystalAlpha358/ncjishaku/commits)
 
 ***
@@ -186,7 +184,7 @@ You can also import the module to use the command development utilities.
             This command calculates <a href="https://en.wikipedia.org/wiki/Round-trip_delay">Round-Trip Time</a> for your bot to the API. It does this by calculating response time samples, so you can tell if your bot is being slow or not.
             <br><br>
             <h4>&gt; <code>jishaku sync [guild_ids...]</code></h4>
-            This command syncs the app_command tree for a list of guilds, or globally if none are given, and then reports the results.
+            This command syncs application commands for a list of guilds, or globally if none are given, and then reports the results.
             <br><br>
         </td>
     </tr>
