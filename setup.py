@@ -135,7 +135,7 @@ setup(
     long_description_content_type='text/markdown',
     project_urls={
         'Code': 'https://github.com/CrystalAlpha358/ncjishaku',
-        # 'Issue tracker': 'https://github.com/scarletcafe/jishaku/issues'
+        'Issue tracker': 'https://github.com/CrystalAlpha358/ncjishaku/issues'
     },
 
     version=version,
@@ -151,7 +151,7 @@ setup(
         ],
     },
 
-    # download_url=f'https://github.com/scarletcafe/jishaku/archive/{version}.tar.gz',
+    # download_url=f'https://github.com/CrystalAlpha358/ncjishaku/archive/{version}.tar.gz',
 
     keywords='jishaku nextcord discord cog repl extension',
     classifiers=[
