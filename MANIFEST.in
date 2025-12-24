@@ -1,14 +1,9 @@
-include LICENSE
-include README.rst
-include ncjishaku/py.typed
-include ncjishaku/features/scaffolds/cargo/Cargo.toml
-include ncjishaku/features/scaffolds/cargo/src/main.rs
-include ncjishaku/features/scaffolds/npm/package.json
-include ncjishaku/features/scaffolds/npm/index.js
-include ncjishaku/features/scaffolds/pyright/main.py
-include ncjishaku/features/scaffolds/pyright/pyrightconfig.json
-include requirements/_.txt
-include requirements/docs.txt
-include requirements/procinfo.txt
-include requirements/test.txt
-include requirements/voice.txt
+global-exclude .*
+prune .*
+
+prune docs
+prune requirements
+
+exclude *
+include pyproject.toml
+include setup.py

@@ -12,6 +12,8 @@ Meta information about ncjishaku.
 
 """
 
+import importlib.metadata
+import re
 import typing
 
 __all__ = (
@@ -24,6 +26,13 @@ __all__ = (
     'version_info'
 )
 
+_VERSION_PATTERN: typing.Final = r"""
+    ^(?P<major>\d+)\.(?P<minor>\d+)\.(?P<micro>\d+)
+    (?:(?P<level>a|b|rc)(?P<serial>\d+))?
+    (?:\.post(?P<post>\d+))?
+    (?:\.dev(?P<dev>\d+))?
+"""
+
 
 class VersionInfo(typing.NamedTuple):
     """Version info named tuple for Jishaku"""
@@ -33,31 +42,33 @@ class VersionInfo(typing.NamedTuple):
     releaselevel: str
     serial: int
 
-    def __str__(self) -> str:
-        version = '.'.join(map(str, (self.major, self.minor, self.micro)))
-        match self.releaselevel.lower():
-            case 'final' | '':
-                return version
-            case 'alpha':
-                releaselevel = 'a'
-            case 'beta':
-                releaselevel = 'b'
-            case 'c' | 'pre' | 'preview':
-                releaselevel = 'rc'
-            case 'dev':
-                releaselevel = '.dev'
-            case 'post' | 'rev' | 'r':
-                releaselevel = '.post'
-            case other:
-                releaselevel = other
-        return f'{version}{releaselevel}{self.serial}'
+    @classmethod
+    def parse_version(cls, version: str) -> typing.Self:
+        m = re.match(_VERSION_PATTERN, version, re.VERBOSE | re.IGNORECASE)
+        if not m:
+            raise ValueError('Failed to parse version')
 
+        match m['level']:
+            case 'a':
+                releaselevel = 'alpha'
+            case 'b':
+                releaselevel = 'beta'
+            case 'rc':
+                releaselevel = 'preview'
+            case _:
+                releaselevel = 'final'
 
-version_info = VersionInfo(major=3, minor=0, micro=0, releaselevel='beta', serial=1)
+        return cls(int(m['major']), int(m['minor']), int(m['micro']), releaselevel, int(m['serial'] or 0))
+
 
 __author__ = 'CrystalAlpha358'
 __copyright__ = 'Copyright (c) 2025 CrystalAlpha358'
 __docformat__ = 'restructuredtext en'
 __license__ = 'MIT'
 __title__ = 'ncjishaku'
-__version__ = str(version_info)
+try:
+    __version__ = importlib.metadata.version(__title__)
+except importlib.metadata.PackageNotFoundError:
+    __version__ = '0.0.0'
+
+version_info = VersionInfo.parse_version(__version__)
