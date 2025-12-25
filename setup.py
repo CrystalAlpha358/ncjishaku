@@ -50,5 +50,16 @@ SOFTWARE.
 """
 
 from setuptools import setup
+from setuptools_scm import ScmVersion
 
-setup()
+
+def node_with_branch_scheme(version: ScmVersion) -> str:
+    time_format = '%Y%m%d'
+    if version.exact or version.node is None:
+        return version.format_choice('', '+d{time:{time_format}}', time_format=time_format)
+    else:
+        prefix = r'+{node}.{branch}'
+        return version.format_choice(prefix, f'{prefix}.d{{time:{time_format}}}')
+
+
+setup(use_scm_version={'local_scheme': node_with_branch_scheme})

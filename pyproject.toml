@@ -85,5 +85,3 @@ ncjishaku = 'ncjishaku.__main__:entrypoint'
 [tool.setuptools]
 packages = ['ncjishaku', 'ncjishaku.features', 'ncjishaku.repl']
 include-package-data = true
-
-[tool.setuptools_scm]
