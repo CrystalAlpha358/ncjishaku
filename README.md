@@ -1,8 +1,6 @@
-<!-- Currently commented out because it has not been uploaded PyPI
 [![Python versions](https://img.shields.io/pypi/pyversions/ncjishaku.svg)](https://pypi.python.org/pypi/ncjishaku)
 [![License](https://img.shields.io/pypi/l/ncjishaku.svg)](https://github.com/CrystalAlpha358/ncjishaku/blob/master/LICENSE)
 [![Status](https://img.shields.io/pypi/status/ncjishaku.svg)](https://pypi.python.org/pypi/ncjishaku)
--->
 [![Issues](https://img.shields.io/github/issues/CrystalAlpha358/ncjishaku.svg?colorB=3333ff)](https://github.com/CrystalAlpha358/ncjishaku/issues)
 [![Commit activity](https://img.shields.io/github/commit-activity/w/CrystalAlpha358/ncjishaku.svg)](https://github.com/CrystalAlpha358/ncjishaku/commits)
 
@@ -27,8 +25,6 @@ a debugging and utility extension for nextcord bots
 
 ***
 
-***Disclaimer:*** This project is currently in very early stages of development.
-
 ncjishaku is an extension for bot developers that enables rapid prototyping, experimentation, and debugging of features for bots.
 
 This is a fork of [jishaku](https://github.com/scarletcafe/jishaku) for nextcord v3.
@@ -37,7 +33,7 @@ One of ncjishaku's core philosophies is to be dynamic and easy-to-use. Here's th
 
 > 1. Download ncjishaku on the command line using pip:
 > ```bash
-> pip install -U "ncjishaku @ git+https://github.com/CrystalAlpha358/ncjishaku@master"
+> pip install -U ncjishaku
 > ```
 > 2. Load the extension in your bot code before it runs:
 > ```python
@@ -50,11 +46,8 @@ You can also import the module to use the command development utilities.
 ## Index
 
 * [Command reference](#command-reference)
-* [Acknowledgements](#acknowledgements)
-
-<!-- Currently commented out because it has not been uploaded PyPI
 * [Installing development versions](#installing-development-versions)
--->
+* [Acknowledgements](#acknowledgements)
 
 ## Command reference
 
@@ -237,7 +230,6 @@ You can also import the module to use the command development utilities.
     </tr>
 </table>
 
-<!-- Currently commented out because it has not been uploaded PyPI
 ## Installing development versions
 
 If you'd like to test the latest versions of ncjishaku, you can do so by downloading from the git hosts instead of from PyPI.
@@ -256,7 +248,6 @@ If you run into such a problem, you can force ncjishaku to be reinstalled like t
 > ```
 
 You **must** have installed ncjishaku with one of the commands above before doing this else you will probably end up with a broken installation.
--->
 
 ## Acknowledgements
 
