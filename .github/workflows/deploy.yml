@@ -60,13 +60,8 @@ jobs:
     - name: Create distributions and install wheel
       shell: bash
       run: |
-        export tag_name="${GITHUB_REF##*/}"
-
-        # Substitute README assets with direct GitHub links
-        sed -i'.original' -e "s@src=\".github/assets@src=\"$GITHUB_SERVER_URL/$GITHUB_REPOSITORY/raw/$GITHUB_SHA/.github/assets@g" README.md
-        rm -f README.md.original
-
         uv build
+
         rm -rf ncjishaku
         find dist -name *.whl -exec uv pip install '{}' +
 
