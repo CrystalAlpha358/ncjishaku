@@ -24,6 +24,8 @@ jobs:
           - {NAME: 'pypi', PIP_TARGET: 'nextcord[voice]'}
           - {NAME: 'git', PIP_TARGET: 'nextcord[voice] @ git+https://github.com/nextcord/nextcord@master'}
     name: "${{ matrix.os }} CPython ${{ matrix.python.version }} with ${{ matrix.nextcord.NAME }} nextcord"
+    env:
+      SETUPTOOLS_SCM_OVERRIDES_FOR_NCJISHAKU: '{local_scheme = "no-local-version"}'
     steps:
     - uses: actions/checkout@v4
       with:

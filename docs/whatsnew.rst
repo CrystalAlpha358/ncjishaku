@@ -3,7 +3,7 @@
 What's new?
 ================
 
-Version 3.0.0b4
+Version 3.0.0b5
 ----------------
 
 This release is the first version of ncjishaku, which was forked from `jishaku <https://github.com/scarletcafe/jishaku>`_ and ported to nextcord v3.
