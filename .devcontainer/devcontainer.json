@@ -4,15 +4,21 @@
 	"name": "ncjishaku",
 	// Or use a Dockerfile or Docker Compose file. More info: https://containers.dev/guide/dockerfile
 	"image": "mcr.microsoft.com/devcontainers/python:2-3.12-bookworm",
+
+	// Features to add to the dev container. More info: https://containers.dev/features.
 	"features": {
 		"ghcr.io/devcontainers-extra/features/uv:1": {
 			"shellautocompletion": true,
 			"version": "latest"
+		},
+		"ghcr.io/devcontainers/features/docker-in-docker:2": {
+			"moby": true,
+			"version": "latest"
+		},
+		"ghcr.io/devcontainers-extra/features/act:1": {
+			"version": "latest"
 		}
 	},
-
-	// Features to add to the dev container. More info: https://containers.dev/features.
-	// "features": {},
 
 	// Use 'forwardPorts' to make a list of ports inside the container available locally.
 	// "forwardPorts": [],
@@ -28,13 +34,15 @@
 	"customizations": {
 		"vscode": {
 			"extensions": [
-				"bierner.markdown-preview-github-styles",
+				"SanjulaGanepola.github-local-actions",
+				"bierner.github-markdown-preview",
 				"charliermarsh.ruff",
 				"codezombiech.gitignore",
+				"github.vscode-github-actions",
 				"lextudio.restructuredtext",
 				"ms-python.python",
-				"tamasfe.even-better-toml",
-				"swyddfa.esbonio"
+				"swyddfa.esbonio",
+				"tamasfe.even-better-toml"
 			]
 		}
 	}
