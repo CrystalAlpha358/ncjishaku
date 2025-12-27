@@ -1,5 +1,8 @@
 name: Python package
 
+env:
+  UV_LINK_MODE: copy
+
 on:
   push:
   pull_request:
