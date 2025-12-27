@@ -24,8 +24,6 @@ jobs:
           - {NAME: 'pypi', PIP_TARGET: 'nextcord[voice]'}
           - {NAME: 'git', PIP_TARGET: 'nextcord[voice] @ git+https://github.com/nextcord/nextcord@master'}
     name: "${{ matrix.os }} CPython ${{ matrix.python.version }} with ${{ matrix.nextcord.NAME }} nextcord"
-    env:
-      SETUPTOOLS_SCM_OVERRIDES_FOR_NCJISHAKU: '{local_scheme = "no-local-version"}'
     steps:
     - uses: actions/checkout@v4
       with:
@@ -134,7 +132,7 @@ jobs:
         run: |
           set -x
           export tag_name="${GITHUB_REF##*/}"
-          uv run python create_dist_summary.py
+          uv run --no-sync python create_dist_summary.py
           assets=()
           for asset in ./dist/*.{whl,tar.gz}; do
             assets+=("-a" "$asset")
@@ -144,6 +142,4 @@ jobs:
 
       - name: Publish packages to PyPI
         shell: bash
-        env:
-          PYPI_TOKEN: ${{ secrets.TEST_PYPI_TOKEN }}
-        run: uv publish --publish-url 'https://test.pypi.org/legacy/' --token "$PYPI_TOKEN"
+        run: uv publish
