@@ -73,6 +73,12 @@ voice = [
     'nextcord[voice] >= 3.0.0',
 ]
 
+[dependency-groups]
+dev = [
+    'setuptools >= 80',
+    'setuptools-scm >= 8',
+]
+
 [project.urls]
 Homepage = 'https://github.com/CrystalAlpha358/ncjishaku'
 Documentation = 'https://ncjishaku.readthedocs.io/'
@@ -85,3 +91,6 @@ ncjishaku = 'ncjishaku.__main__:entrypoint'
 [tool.setuptools]
 packages = ['ncjishaku', 'ncjishaku.features', 'ncjishaku.repl']
 include-package-data = true
+
+[tool.esbonio.sphinx]
+pythonCommand = ['uv', 'run', '--extra', 'docs', 'python']
