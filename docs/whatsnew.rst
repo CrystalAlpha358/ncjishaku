@@ -4,7 +4,10 @@ What's new?
 ================
 
 Version 3.1.0b1
-----------------
+---------------
+
+This version incorporates upstream updates.
+The original update information is as follows:
 
 This version is a feature & patch release, being expedited due to Discord introducing strange behaviour regarding code blocks.
 
