@@ -63,7 +63,7 @@ publish = [
 ]
 test = [
     'coverage >= 7.5.4',
-    'ruff >= 0.12.11',
+    'ruff >= 0.12.11, < 0.16.0',
     'pytest >= 8.3.5',
     'pytest-asyncio >= 0.24.0',
     'pytest-cov >= 5.0.0',
