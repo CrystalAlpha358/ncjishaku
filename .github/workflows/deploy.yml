@@ -145,4 +145,6 @@ jobs:
 
       - name: Publish packages to PyPI
         shell: bash
-        run: uv publish
+        env:
+          PYPI_TOKEN: ${{ secrets.TEST_PYPI_TOKEN }}
+        run: uv publish --publish-url 'https://test.pypi.org/legacy/' --token "$PYPI_TOKEN"
