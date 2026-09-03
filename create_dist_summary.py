@@ -112,7 +112,10 @@ commit_hash = commit_hash.decode('utf-8').strip()
 with open('dist_summary.jinja2', 'r', encoding='utf-8') as fp:
     template: Template = ENVIRONMENT.from_string(fp.read())
 
-with open('dist/DIST_SUMMARY.md', 'w', encoding='utf-8') as fp:
+with open('dist/RELEASE_NAME.md', 'w', encoding='utf-8') as fp:
+    fp.write(importlib.metadata.distribution('ncjishaku').version)
+
+with open('dist/RELEASE_SUMMARY.md', 'w', encoding='utf-8') as fp:
     output = template.render(
         env=os.getenv,
         package=importlib.metadata.distribution('ncjishaku'),

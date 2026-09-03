@@ -25,12 +25,12 @@ jobs:
           - {NAME: 'git', PIP_TARGET: 'nextcord[voice] @ git+https://github.com/nextcord/nextcord@master'}
     name: "${{ matrix.os }} CPython ${{ matrix.python.version }} with ${{ matrix.nextcord.NAME }} nextcord"
     steps:
-    - uses: actions/checkout@v4
+    - uses: actions/checkout@v6
       with:
         fetch-depth: 0
 
     - name: Set up Python ${{ matrix.python.version }}
-      uses: actions/setup-python@v5
+      uses: actions/setup-python@v6
       with:
         python-version: ${{ matrix.python.version }}
 
@@ -74,7 +74,7 @@ jobs:
         cd docs && UV_NO_SYNC=1 make html
 
     - name: Upload artifacts
-      uses: actions/upload-artifact@v4
+      uses: actions/upload-artifact@v7
       with:
         name: distributions-${{ matrix.os }}-${{ matrix.python.version }}-${{ matrix.nextcord.NAME }}
         path: dist/*
@@ -88,17 +88,17 @@ jobs:
       contents: write
       # Required for OIDC
       id-token: write
-    if: github.event_name == 'push' && startsWith(github.event.ref, 'refs/tags/')
+    if: github.event_name == 'push' && startsWith(github.event.ref, 'refs/tags/versions/v')
 
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
         with:
           fetch-depth: 0
           submodules: true
 
       - name: Set up Python 3.14
-        uses: actions/setup-python@v5
+        uses: actions/setup-python@v6
         with:
           python-version: '3.14'  # Watch as I let this get handled as a float again
 
@@ -110,11 +110,10 @@ jobs:
       - name: Install dependencies
         shell: bash
         run: |
-          sudo apt-get update && sudo apt-get install -y hub
           uv sync --no-editable --extra publish
 
       - name: Download artifacts
-        uses: actions/download-artifact@v4
+        uses: actions/download-artifact@v8
         with:
           # There is currently a bug where download-artifact downloading multiple files of the same name corrupts the file.
           # https://github.com/actions/download-artifact/issues/298
@@ -128,16 +127,20 @@ jobs:
       - name: Publish wheels as release artifacts on GitHub
         shell: bash
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           set -x
-          export tag_name="${GITHUB_REF##*/}"
+          export tag_name="${GITHUB_REF##*/tags/}"
           uv run --no-sync python create_dist_summary.py
           assets=()
           for asset in ./dist/*.{whl,tar.gz}; do
-            assets+=("-a" "$asset")
+            assets+=("$asset")
           done
-          hub release create "${assets[@]}" -F ./dist/DIST_SUMMARY.md "$tag_name"
+
+          tag_name="${GITHUB_REF##*/tags/}"
+          release_name="$(cat ./dist/RELEASE_NAME.md)"
+          gh release create "${tag_name}" --draft --title "${release_name}" --notes-file ./dist/RELEASE_SUMMARY.md "${assets[@]}"
+          gh release edit "${tag_name}" --draft=false
           rm ./dist/*.md
 
       - name: Publish packages to PyPI

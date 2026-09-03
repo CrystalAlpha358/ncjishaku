@@ -107,9 +107,9 @@ class InvocationFeature(Feature):
             return
 
         for override in overrides:
-            if isinstance(override, nextcord.User):
+            if isinstance(override, (nextcord.User, nextcord.Member)):
                 # This is a user
-                if ctx.guild:
+                if isinstance(override, nextcord.User) and ctx.guild:
                     # Try to upgrade to a Member instance
                     # This used to be done by a Union converter, but doing it like this makes
                     #  the command more compatible with chaining, e.g. `jsk in .. jsk su ..`
@@ -140,6 +140,56 @@ class InvocationFeature(Feature):
 
         await alt_ctx.command.invoke(alt_ctx)
         return
+
+    @Feature.Command(parent="jsk", name="rerun", aliases=["rr", "rerun!", "rr!", "re", "re!"])
+    async def jsk_rerun(
+        self,
+        ctx: ContextT,
+        overrides: commands.Greedy[OVERRIDE_SIGNATURE],
+        *,
+        message: typing.Optional[commands.MessageConverter] = None,
+    ):
+        """
+        Re-run a command from a replied message or message link, optionally with a different user, channel or thread and/or bypassing checks and cooldowns
+
+        Users will try to resolve to a Member, but will use a User if it can't find one.
+
+        Piggybacks off of `jsk override` so it accepts all the same overrides and has the same fundamental behaviors.
+        """
+
+        target = message
+        if target is None:
+            ref = ctx.message.reference
+            if ref is not None:
+                with contextlib.suppress(commands.MessageNotFound):
+                    target = await commands.MessageConverter().convert(ctx, ref.jump_url)
+
+        if not isinstance(target, nextcord.Message):
+            return await ctx.send("Reply to a message or provide a message link.")
+
+        # Setting the target's author to the current author and then overriding it back as the original
+        # target's author later in exec feels redundant but we don't want to run the exec command itself
+        # as the target's author, just in case.
+        msg_ctx = await self.bot.get_context(target, cls=ctx.__class__)
+        msg_ctx = await copy_context_with(msg_ctx, author=ctx.author)
+        msg_ctx.invoked_with = ctx.invoked_with
+
+        # Prevent infinite recursions by prohibiting rerunning rerun commands
+        if msg_ctx.command and msg_ctx.view:
+            prev = msg_ctx.view.index
+
+            msg_ctx.view.skip_ws()
+            sub = msg_ctx.view.get_word()
+            if sub and self.jsk_rerun.parent.get_command(sub) is self.jsk_rerun:  # type: ignore
+                return await ctx.send("Cannot rerun a rerun command.")
+
+            msg_ctx.view.index = prev
+
+        # If no user overrides were provided, default to the original message's author
+        if not any(isinstance(o, (nextcord.Member, nextcord.User)) for o in overrides):
+            overrides = [target.author, *overrides]  # pyright: ignore[reportAssignmentType]
+
+        await self.jsk_override(msg_ctx, overrides, command_string=target.content.lstrip(ctx.prefix or ""))  # pyright: ignore[reportCallIssue]
 
     @Feature.Command(parent="jsk", name="repeat")
     async def jsk_repeat(self, ctx: ContextT, times: int, *, command_string: str):

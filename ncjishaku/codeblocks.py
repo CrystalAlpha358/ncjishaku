@@ -13,6 +13,7 @@ Converters for detecting and obtaining codeblock content
 """
 
 import collections
+import re
 import typing
 
 __all__ = ('Codeblock', 'codeblock_converter')
@@ -36,6 +37,11 @@ def codeblock_converter(argument: str) -> Codeblock:
     :attr:`Codeblock.language` is an empty string if no language was given with this codeblock.
     It is ``None`` if the input was not a complete codeblock.
     """
+
+    # Remove direction-controlling characters sometimes inserted by Discord around codeblocks
+    # https://github.com/scarletcafe/jishaku/issues/253#issuecomment-3831488396
+    argument = re.sub('[\u2066-\u206D]', '', argument).strip()
+
     if not argument.startswith('`'):
         return Codeblock(None, argument)
 

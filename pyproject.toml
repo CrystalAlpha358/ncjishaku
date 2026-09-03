@@ -92,5 +92,8 @@ ncjishaku = 'ncjishaku.__main__:entrypoint'
 packages = ['ncjishaku', 'ncjishaku.features', 'ncjishaku.repl']
 include-package-data = true
 
+[tool.setuptools_scm.tag]
+prefix = "versions/v"
+
 [tool.esbonio.sphinx]
 pythonCommand = ['uv', 'run', '--extra', 'docs', 'python']
