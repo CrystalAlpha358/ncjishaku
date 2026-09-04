@@ -3,7 +3,7 @@
 What's new?
 ================
 
-Version 3.1.0b2
+Version 3.1.0b3
 ---------------
 
 This version incorporates upstream updates.
