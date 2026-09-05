@@ -16,9 +16,9 @@ It can be used to perform manual administrative actions as the bot, or to test J
 
 """
 
-import asyncio
 import logging
 import sys
+import time
 import typing
 import uuid
 
@@ -31,57 +31,6 @@ LOG_STREAM: logging.Handler = logging.StreamHandler(stream=sys.stdout)
 LOG_STREAM.setFormatter(LOG_FORMAT)
 
 LOGGER = logging.getLogger('ncjishaku.__main__')
-
-
-async def entry(bot: commands.Bot, *args: typing.Any, **kwargs: typing.Any):
-    """
-    Async entrypoint
-    """
-
-    try:
-        LOGGER.critical("Loading ncjishaku")
-        bot.load_extension('ncjishaku')
-
-        for extension in bot.extensions_to_load:  # type: ignore
-            extension: str
-            LOGGER.critical("Loading %s", extension)
-            bot.load_extension(extension)
-
-        LOGGER.critical(
-            'Generated a unique UUID for this session: %s'
-            '\nYou can use Jishaku with your bot once it starts using `%s::jsk <subcommand>`'
-            '\nIf you have no message content, you can prefix it with the mention: `@Bot %s::jsk <subcommand>`',
-            bot.unique_id, bot.unique_id, bot.unique_id  # type: ignore
-        )
-
-        try:
-            import pyperclip  # type: ignore # pylint: disable=import-outside-toplevel
-        except ImportError:
-            LOGGER.critical(
-                'If you install `pyperclip`, this prefix will be copied to your clipboard automatically.'
-            )
-        else:
-            try:
-                pyperclip.copy(f'{bot.unique_id}::jsk')  # type: ignore
-            except Exception as error:  # pylint: disable=broad-except
-                LOGGER.critical(
-                    'The prefix could not be copied to your clipboard: %s',
-                    error
-                )
-            else:
-                LOGGER.critical(
-                    'The prefix has been copied to your clipboard.'
-                )
-
-        if not bot.skip_wait:  # type: ignore
-            await asyncio.sleep(10)
-
-        try:
-            await bot.start(*args, **kwargs)
-        except KeyboardInterrupt:
-            pass
-    finally:
-        await bot.close()
 
 
 @click.command()
@@ -160,17 +109,52 @@ def entrypoint(
 
     def prefix(bot: commands.Bot, _: nextcord.Message) -> typing.List[str]:
         return [
-            f'{bot.unique_id}::',  # type: ignore
-            f'<@{bot.user.id}> {bot.unique_id}::',  # type: ignore
-            f'<@!{bot.user.id}> {bot.unique_id}::',  # type: ignore
+            f'{unique_id}::',
+            f'<@{bot.user.id}> {unique_id}::',  # type: ignore
+            f'<@!{bot.user.id}> {unique_id}::',  # type: ignore
         ]
 
     bot = commands.Bot(prefix, intents=intents_class)  # pyright: ignore[reportArgumentType]
-    bot.unique_id = str(uuid.uuid4())  # type: ignore
-    bot.extensions_to_load = load_extension  # type: ignore
-    bot.skip_wait = skip_wait  # type: ignore
+    unique_id = str(uuid.uuid4())
 
-    asyncio.run(entry(bot, token))
+    LOGGER.critical("Loading ncjishaku")
+    bot.load_extension('ncjishaku')
+
+    for extension in load_extension:
+        extension: str
+        LOGGER.critical("Loading %s", extension)
+        bot.load_extension(extension)
+
+    LOGGER.critical(
+        'Generated a unique UUID for this session: %s'
+        '\nYou can use Jishaku with your bot once it starts using `%s::jsk <subcommand>`'
+        '\nIf you have no message content, you can prefix it with the mention: `@Bot %s::jsk <subcommand>`',
+        unique_id, unique_id, unique_id,
+    )
+
+    try:
+        import pyperclip  # type: ignore # pylint: disable=import-outside-toplevel
+    except ImportError:
+        LOGGER.critical(
+            'If you install `pyperclip`, this prefix will be copied to your clipboard automatically.'
+        )
+    else:
+        try:
+            pyperclip.copy(f'{unique_id}::jsk')
+        except Exception as error:  # pylint: disable=broad-except
+            LOGGER.critical(
+                'The prefix could not be copied to your clipboard: %s',
+                error
+            )
+        else:
+            LOGGER.critical(
+                'The prefix has been copied to your clipboard.'
+            )
+
+    if not skip_wait:
+        time.sleep(10)
+
+    bot.run(token)
 
 
 if __name__ == '__main__':
