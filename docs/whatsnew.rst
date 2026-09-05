@@ -3,18 +3,16 @@
 What's new?
 ================
 
-Version 3.1.0b3
----------------
+Version 3.1.0rc1
+----------------
 
-This version incorporates upstream updates.
-The original update information is as follows:
-
-This version is a feature & patch release, being expedited due to Discord introducing strange behaviour regarding code blocks.
+This version is a feature & patch release, incorporating upstream updates and fixing an issue encountered during CLI execution.
 
 The changes in this release are:
 
-- The ``jsk rerun`` command, which allows a previously sent jishaku command to be executed again without needing to re-upload attachments or other message details (PR `#251 <https://github.com/scarletcafe/jishaku/pull/251>`_, thanks `@WitherredAway <https://github.com/WitherredAway>`_ for implementation).
-- Any command that uses code block converters will now strip formatter characters silently added by certain Discord clients in presently-unknown circumstances. This prevents the inability to use a large portion of jishaku in these situations (issue `#253 <https://github.com/scarletcafe/jishaku/issues/253>`_, thanks `@Stacer-Varien <https://github.com/Stacer-Varien>`_ and `@Captain8771 <https://github.com/Captain8771>`_ for reporting).
+- Incorporating upstream jishaku's updates from version 2.7.0 to 2.7.5, which has included the addition of the ``jsk rerun`` command and fixes to the behavior regarding code blocks.
+  Please refer to the `upstream update information <https://jishaku.readthedocs.io/en/latest/whatsnew.html#version-2-7-5>`_ for details on these updates.
+- Fixing an issue where heartbeats would stop being sent when executing via CLI, caused by differences in how the asyncio event loop is started between discord.py and nextcord.
 
 Version 3.0.0rc1
 ----------------
